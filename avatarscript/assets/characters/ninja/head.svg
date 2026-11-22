@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Ninja Head Mask / Hood -->
+  <circle cx="200" cy="180" r="90" fill="#181825" stroke="#0F0F17" stroke-width="8"/>
+  <!-- Ninja Face Opening (Exposing eye region) -->
+  <polygon points="135,135 265,135 255,185 145,185" fill="#FFD1B3" stroke="#0F0F17" stroke-width="5"/>
+  <!-- Crimson Forehead Headband -->
+  <rect x="110" y="105" width="180" height="26" rx="6" fill="#DC2626" stroke="#0F0F17" stroke-width="4"/>
+  <!-- Silver Headband Plate -->
+  <rect x="175" y="110" width="50" height="16" rx="4" fill="#E2E8F0" stroke="#0F0F17" stroke-width="3"/>
+</svg>

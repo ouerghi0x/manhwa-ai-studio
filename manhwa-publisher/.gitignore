@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets & OAuth credentials (NEVER COMMIT)
+credentials/*.json
+!credentials/.gitkeep
+.env
+examples/*_test.json
+
+# Runtime data & logs
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+!data/.gitkeep
+logs/*.log
+logs/*.jsonl
+!logs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db

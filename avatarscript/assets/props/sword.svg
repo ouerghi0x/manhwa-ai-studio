@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 240">
+  <!-- Glowing blade -->
+  <polygon points="50,10 62,50 60,165 40,165 38,50" fill="#e8f4fc" stroke="#4aa8f8" stroke-width="3"/>
+  <line x1="50" y1="18" x2="50" y2="162" stroke="#4aa8f8" stroke-width="2"/>
+  <!-- Crossguard -->
+  <rect x="22" y="165" width="56" height="12" rx="3" fill="#d4af37" stroke="#8a701a" stroke-width="2"/>
+  <circle cx="50" cy="171" r="5" fill="#3088e8" stroke="#104080" stroke-width="1.5"/>
+  <!-- Grip -->
+  <rect x="44" y="177" width="12" height="42" rx="3" fill="#4a2e18" stroke="#221105" stroke-width="2"/>
+  <line x1="44" y1="187" x2="56" y2="187" stroke="#d4af37" stroke-width="1.5"/>
+  <line x1="44" y1="199" x2="56" y2="199" stroke="#d4af37" stroke-width="1.5"/>
+  <line x1="44" y1="211" x2="56" y2="211" stroke="#d4af37" stroke-width="1.5"/>
+  <!-- Pommel -->
+  <circle cx="50" cy="226" r="8" fill="#d4af37" stroke="#8a701a" stroke-width="2"/>
+</svg>

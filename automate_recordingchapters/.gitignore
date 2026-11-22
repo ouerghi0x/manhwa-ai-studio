@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Browser profiles (contain personal cookies, sessions & history — NEVER COMMIT)
+browser_profile/
+manhwa_recorder/browser_profile/
+
+# Recorded videos, logs & temporary artifacts
+output/
+manhwa_recorder/output/
+logs/
+manhwa_recorder/logs/
+test_video/
+tmp/
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.log
+
+# Environment, local user settings & Secrets
+.env
+*.secret
+manhwa_recorder/config/user_settings.json
+
+# OS
+.DS_Store
+Thumbs.db

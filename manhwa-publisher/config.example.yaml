@@ -1,0 +1,24 @@
+youtube:
+  category_id: "24"
+  default_visibility: "private"
+
+upload:
+  chunk_size_mb: 8
+  max_retries: 8
+  prevent_duplicates: true
+  resumable: true
+  file_ready_timeout_seconds: 60
+  file_ready_poll_seconds: 1.0
+
+timezone: "UTC"
+
+database:
+  path: "data/publisher.db"
+
+paths:
+  logs: "logs"
+  credentials: "credentials"
+
+safety:
+  require_approval: true
+  allow_publication: true

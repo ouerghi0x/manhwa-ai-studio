@@ -1,0 +1,77 @@
+scene "Jin and MedAziz Werghi Showcase":
+    canvas 1920x1080
+    background "#141622"
+    fps 30
+    duration 6.0s
+    render "examples/two_characters_showcase.mp4"
+
+    avatar "Jin":
+        character "jin"
+        position x:600 y:640
+        scale 1.25
+
+        idle:
+            breathe
+            blink every 2.4s
+
+        at 0.0s:
+            expression smirk
+            head_turn yaw:10 duration 0.4s
+
+        at 0.8s:
+            talk duration 1.8s
+            left_arm 28 duration 0.5s
+
+        at 2.0s:
+            left_arm 0 duration 0.4s
+            expression happy
+            hold item:"microphone" hand:right scale:1.1
+
+        at 3.2s:
+            head_turn yaw:-5 duration 0.3s
+            right_arm -35 duration 0.4s
+
+        at 4.5s:
+            right_arm 0 duration 0.4s
+            hold item:"none" hand:right
+            expression smirk
+
+    avatar "MedAziz":
+        character "medazizwerghi"
+        position x:1320 y:640
+        scale 1.25
+
+        idle:
+            breathe
+            blink every 2.8s
+
+        at 0.0s:
+            expression happy
+            head_turn yaw:-10 duration 0.4s
+
+        at 0.5s:
+            aura blue size:25 intensity:0.8 speed:1.2 sparks:0 duration 0.5s
+
+            right_arm -30 duration 0.5s
+
+        at 1.6s:
+            aura cyan size:40 intensity:1.5 speed:1.8 sparks:1 duration 0.5s
+
+            right_arm 0 duration 0.4s
+            talk duration 2.2s
+            left_arm 25 duration 0.4s
+
+        at 3.0s:
+            aura gold size:65 intensity:2.2 speed:2.5 sparks:1 duration 0.2s
+
+            expression smirk
+            left_arm 0 duration 0.4s
+            walk to_x:1200 duration 1.2s speed:1.0
+
+        at 4.4s:
+            expression happy
+            aura gold size:75 intensity:2.2 speed:2.5 sparks:1 duration 0.2s
+
+            head_turn yaw:5 duration 0.3s
+            hold item:"controller" hand:right scale:1.15
+            right_arm -25 duration 0.4s

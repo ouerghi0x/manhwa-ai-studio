@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Demon Torso / Dark Armor -->
+  <polygon points="120,250 280,250 310,480 90,480" fill="#2E1065" stroke="#4C1D95" stroke-width="8"/>
+  <!-- Chest Flame Plate -->
+  <polygon points="200,270 230,340 200,380 170,340" fill="#F59E0B" stroke="#B45309" stroke-width="4"/>
+</svg>

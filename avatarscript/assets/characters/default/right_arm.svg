@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Right Arm Sleeve -->
+  <polygon points="290,260 335,280 355,395 310,405" fill="#2563EB" stroke="#1E1E24" stroke-width="8"/>
+  <!-- Right Hand -->
+  <circle cx="334" cy="405" r="22" fill="#FFD1B3" stroke="#1E1E24" stroke-width="7"/>
+</svg>

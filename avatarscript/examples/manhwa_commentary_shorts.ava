@@ -1,0 +1,55 @@
+# AvatarScript Example: Vertical Manhwa Commentary Shorts (9:16 @ 60 FPS)
+# Demonstrates all 6 expressions, all 6 animation primitives, easing curves, and idle loops.
+
+scene "manhwa_commentary_shorts":
+
+    canvas 1080x1920
+    background "#141622"
+    fps 60
+    duration 10s
+
+    avatar "narrator":
+
+        character "default"
+
+        position x:540 y:1420
+        scale 1.15
+        rotation 0
+
+        idle:
+            breathe
+            blink every 3.5s
+
+        at 0s:
+            expression neutral
+            fade 1.0 duration 0.4s easing ease_out
+
+        at 1.5s:
+            expression surprised
+            animate bounce duration 0.5s easing ease_out
+            scale 1.28 duration 0.5s easing ease_out
+
+        at 3.2s:
+            expression shocked
+            animate shake duration 0.45s intensity 18
+            rotate -6 duration 0.3s easing ease_in_out
+
+        at 5.0s:
+            expression sad
+            move x:-40 y:20 duration 0.6s easing ease_in_out
+            rotate 0 duration 0.4s easing ease_out
+
+        at 6.8s:
+            expression angry
+            animate shake duration 0.5s intensity 14
+            move x:40 y:-20 duration 0.4s easing ease_out
+
+        at 8.5s:
+            expression happy
+            animate bounce duration 0.6s
+            scale 1.15 duration 0.5s easing ease_in_out
+
+        at 9.5s:
+            fade 0.0 duration 0.5s easing ease_in
+
+    render "manhwa_commentary_shorts.mp4"

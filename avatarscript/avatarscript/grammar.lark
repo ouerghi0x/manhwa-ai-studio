@@ -1,0 +1,129 @@
+// AvatarScript v0.1 Grammar (LALR + Indenter)
+
+start: _NL* scene_def _NL*
+
+scene_def: "scene" STRING ":" _NL _INDENT scene_item+ _DEDENT
+
+?scene_item: canvas_stmt
+           | background_stmt
+           | fps_stmt
+           | duration_stmt
+           | avatar_def
+           | render_stmt
+
+canvas_stmt: "canvas" RESOLUTION _NL
+background_stmt: "background" STRING _NL
+fps_stmt: "fps" NUMBER _NL
+duration_stmt: "duration" TIME _NL
+render_stmt: "render" STRING _NL
+
+avatar_def: "avatar" STRING ":" _NL _INDENT avatar_item+ _DEDENT
+
+?avatar_item: character_stmt
+            | position_stmt
+            | scale_prop_stmt
+            | rotation_prop_stmt
+            | hold_stmt
+            | idle_block
+            | timeline_block
+
+character_stmt: "character" STRING _NL
+position_stmt: "position" position_spec _NL
+scale_prop_stmt: "scale" SIGNED_NUMBER _NL
+rotation_prop_stmt: "rotation" SIGNED_NUMBER _NL
+hold_stmt: "hold" hold_param+ _NL
+
+?hold_param: "item" ":" (STRING | NAME) -> hold_item
+           | "hand" ":" (STRING | NAME) -> hold_hand
+           | "scale" ":" SIGNED_NUMBER  -> hold_scale
+           | "item" (STRING | NAME)     -> hold_item
+           | "hand" (STRING | NAME)     -> hold_hand
+           | "scale" SIGNED_NUMBER      -> hold_scale
+           | (STRING | NAME)            -> hold_val
+
+?position_spec: NAME -> named_pos
+              | coord_pair -> coord_pos
+
+coord_pair: "x" ":" SIGNED_NUMBER "y" ":" SIGNED_NUMBER
+
+idle_block: "idle" ":" _NL _INDENT idle_item+ _DEDENT
+
+?idle_item: breathe_stmt
+          | blink_stmt
+
+breathe_stmt: "breathe" _NL
+blink_stmt: "blink" ("every" TIME)? _NL
+
+timeline_block: "at" TIME ":" _NL _INDENT action_stmt+ _DEDENT
+
+?action_stmt: expression_stmt
+            | animate_stmt
+            | direct_transform_stmt
+            | hold_stmt
+            | talk_stmt
+            | head_turn_stmt
+            | look_stmt
+
+head_turn_stmt: "head_turn" head_turn_param+ _NL
+
+?head_turn_param: "yaw" ":" SIGNED_NUMBER      -> param_yaw
+                | "pitch" ":" SIGNED_NUMBER    -> param_pitch
+                | "yaw" SIGNED_NUMBER          -> param_yaw
+                | "pitch" SIGNED_NUMBER        -> param_pitch
+                | "duration" TIME              -> param_duration
+                | "easing" NAME                -> param_easing
+
+look_stmt: "look" look_param+ _NL
+
+?look_param: "at" ":" (NAME | STRING)          -> param_look_at
+           | "x" ":" SIGNED_NUMBER             -> param_look_x
+           | "y" ":" SIGNED_NUMBER             -> param_look_y
+           | "at" (NAME | STRING)              -> param_look_at
+           | "duration" TIME                   -> param_duration
+           | "easing" NAME                     -> param_easing
+           | (NAME | STRING)                   -> param_look_at
+
+talk_stmt: "talk" talk_param+ _NL
+
+?talk_param: "audio" ":" (STRING | NAME)       -> talk_audio
+           | "duration" TIME                   -> talk_duration
+           | "threshold" ":" SIGNED_NUMBER     -> talk_threshold
+           | "speed" ":" SIGNED_NUMBER         -> talk_speed
+           | "audio" (STRING | NAME)           -> talk_audio
+           | (STRING | NAME)                   -> talk_audio
+
+expression_stmt: "expression" NAME _NL
+animate_stmt: "animate" NAME anim_param* _NL
+direct_transform_stmt: TRANSFORM_KIND anim_param* _NL
+
+TRANSFORM_KIND.2: "move" | "scale" | "rotate" | "fade" | "nod" | "arm" | "left_arm" | "right_arm" | "leg" | "left_leg" | "right_leg" | "walk" | "run" | "jump" | "aura" | "shake" | "bounce" | "explode"
+
+?anim_param: "duration" TIME          -> param_duration
+           | "easing" NAME            -> param_easing
+           | "intensity" (":"? SIGNED_NUMBER) -> param_intensity
+           | "color" (":"? (NAME | STRING))  -> param_color
+           | "size" (":"? SIGNED_NUMBER)     -> param_size
+           | "speed" (":"? SIGNED_NUMBER)    -> param_speed
+           | "sparks" (":"? (NAME | SIGNED_NUMBER)) -> param_sparks
+           | "separated" (":"? (TIME | SIGNED_NUMBER)) -> param_separated
+           | "hold" (":"? (TIME | SIGNED_NUMBER))      -> param_hold
+           | "reassemble" (":"? (TIME | SIGNED_NUMBER))-> param_reassemble
+           | "scatter" (":"? (TIME | SIGNED_NUMBER))   -> param_scatter
+           | "fire" (":"? (NAME | SIGNED_NUMBER | STRING)) -> param_fire
+           | NAME ":" (SIGNED_NUMBER | STRING | NAME | TIME) -> param_kv
+           | NAME                     -> param_name
+           | SIGNED_NUMBER            -> param_val
+
+RESOLUTION.2: /[0-9]+x[0-9]+/
+TIME.2: /[0-9]+(\.[0-9]+)?s/
+SIGNED_NUMBER: /[-+]?[0-9]+(\.[0-9]+)?/
+NUMBER: /[0-9]+(\.[0-9]+)?/
+STRING: /"[^"]*"/
+NAME: /[a-zA-Z_][a-zA-Z0-9_]*/
+
+COMMENT: /#[^\r\n]*/
+_NL: /(\r?\n[\t ]*(#[^\r\n]*)?)+/
+
+%ignore /[\t ]+/
+%ignore COMMENT
+%declare _INDENT _DEDENT

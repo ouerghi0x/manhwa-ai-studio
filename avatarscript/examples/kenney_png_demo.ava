@@ -1,0 +1,34 @@
+scene "Kenney PNG Demo":
+    canvas 1280x720
+    background "#1E293B"
+    fps 30
+    duration 4.0s
+    render "kenney_png_demo.mp4"
+
+    avatar "Host":
+        character "kenney_host"
+        position center
+        scale 1.15
+        hold item:"microphone" hand:right scale:0.9
+
+        idle:
+            breathe
+            blink every 2.0s
+
+        at 0.0s:
+            expression neutral
+            talk duration 0.9s
+
+        at 1.0s:
+            expression happy
+            right_arm -45 duration 0.2s
+            animate aura on intensity:0.9 color:blue
+
+        at 2.0s:
+            expression shocked
+            head_turn yaw:25 duration 0.25s
+
+        at 3.0s:
+            expression angry
+            head_turn yaw:0 duration 0.25s
+            animate aura off duration 0.1s

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Eyebrows -->
+  <line x1="140" y1="126" x2="176" y2="128" stroke="#0F172A" stroke-width="6" stroke-linecap="round"/>
+  <line x1="224" y1="128" x2="260" y2="126" stroke="#0F172A" stroke-width="6" stroke-linecap="round"/>
+  <!-- Closed Eyelids -->
+  <line x1="142" y1="150" x2="174" y2="150" stroke="#1E1E24" stroke-width="7" stroke-linecap="round"/>
+  <line x1="226" y1="150" x2="258" y2="150" stroke="#1E1E24" stroke-width="7" stroke-linecap="round"/>
+</svg>

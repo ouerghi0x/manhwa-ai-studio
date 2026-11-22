@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 140">
+  <!-- Phone body -->
+  <rect x="12" y="10" width="56" height="120" rx="12" fill="#181820" stroke="#333340" stroke-width="2.5"/>
+  <!-- Screen -->
+  <rect x="16" y="22" width="48" height="96" rx="4" fill="#2a4570" stroke="#1c2c48" stroke-width="1.5"/>
+  <!-- App interface lines on screen -->
+  <rect x="22" y="32" width="36" height="18" rx="3" fill="#4070b0"/>
+  <rect x="22" y="56" width="36" height="6" rx="2" fill="#7098d0"/>
+  <rect x="22" y="66" width="28" height="6" rx="2" fill="#7098d0"/>
+  <circle cx="40" cy="98" r="8" fill="#50e090"/>
+  <!-- Speaker notch / camera -->
+  <circle cx="40" cy="16" r="2.5" fill="#555566"/>
+</svg>

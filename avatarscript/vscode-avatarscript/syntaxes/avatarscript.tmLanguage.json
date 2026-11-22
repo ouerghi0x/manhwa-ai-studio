@@ -1,0 +1,220 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "AvatarScript",
+  "scopeName": "source.avatarscript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#block-declarations" },
+    { "include": "#scene-and-avatar-properties" },
+    { "include": "#idle-statements" },
+    { "include": "#expression-statements" },
+    { "include": "#animation-statements" },
+    { "include": "#strings" },
+    { "include": "#literals" },
+    { "include": "#parameters" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.avatarscript",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "block-declarations": {
+      "patterns": [
+        {
+          "comment": "scene or avatar block header",
+          "match": "^\\s*(scene|avatar)\\s+(\"[^\"]*\")\\s*(:)",
+          "captures": {
+            "1": { "name": "keyword.control.block.avatarscript" },
+            "2": { "name": "entity.name.section.avatarscript string.quoted.double.avatarscript" },
+            "3": { "name": "punctuation.separator.colon.avatarscript" }
+          }
+        },
+        {
+          "comment": "idle block header",
+          "match": "^\\s*(idle)\\s*(:)",
+          "captures": {
+            "1": { "name": "keyword.control.block.avatarscript" },
+            "2": { "name": "punctuation.separator.colon.avatarscript" }
+          }
+        },
+        {
+          "comment": "timeline 'at <TIME>:' block header",
+          "match": "^\\s*(at)\\s+([0-9]+(?:\\.[0-9]+)?s)\\s*(:)",
+          "captures": {
+            "1": { "name": "keyword.control.block.avatarscript" },
+            "2": { "name": "constant.numeric.time.avatarscript" },
+            "3": { "name": "punctuation.separator.colon.avatarscript" }
+          }
+        }
+      ]
+    },
+    "scene-and-avatar-properties": {
+      "patterns": [
+        {
+          "match": "^\\s*(canvas)\\s+([0-9]+x[0-9]+)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "constant.numeric.resolution.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(background|character|render)\\s+(\"[^\"]*\")",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "string.quoted.double.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(fps)\\s+([0-9]+(?:\\.[0-9]+)?)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "constant.numeric.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(duration)\\s+([0-9]+(?:\\.[0-9]+)?s)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "constant.numeric.time.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(position)\\s+(left|center|right)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "constant.language.position.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(position|rotation)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" }
+          }
+        }
+      ]
+    },
+    "idle-statements": {
+      "patterns": [
+        {
+          "match": "^\\s*(breathe)\\b",
+          "captures": {
+            "1": { "name": "support.function.idle.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(blink)(?:\\s+(every)\\s+([0-9]+(?:\\.[0-9]+)?s))?\\b",
+          "captures": {
+            "1": { "name": "support.function.idle.avatarscript" },
+            "2": { "name": "keyword.operator.word.avatarscript" },
+            "3": { "name": "constant.numeric.time.avatarscript" }
+          }
+        }
+      ]
+    },
+    "expression-statements": {
+      "patterns": [
+        {
+          "match": "^\\s*(expression)\\s+(neutral|happy|sad|angry|surprised|shocked|smirk)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "constant.language.expression.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(expression)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.property.avatarscript" },
+            "2": { "name": "invalid.illegal.expression.avatarscript" }
+          }
+        }
+      ]
+    },
+    "animation-statements": {
+      "patterns": [
+        {
+          "match": "^\\s*(animate)\\s+(shake|bounce|nod|move|rotate|fade|scale|arm|left_arm|right_arm|aura|head_turn|look)\\b",
+          "captures": {
+            "1": { "name": "keyword.control.animate.avatarscript" },
+            "2": { "name": "support.function.animation.avatarscript" }
+          }
+        },
+        {
+          "match": "^\\s*(move|rotate|fade|scale|nod|shake|bounce|arm|left_arm|right_arm|aura|head_turn|look|talk)\\b",
+          "captures": {
+            "1": { "name": "support.function.animation.avatarscript" }
+          }
+        }
+      ]
+    },
+    "parameters": {
+      "patterns": [
+        {
+          "match": "\\b(easing)\\s+(linear|ease_in_out|ease_in|ease_out|elastic_out)\\b",
+          "captures": {
+            "1": { "name": "variable.parameter.avatarscript" },
+            "2": { "name": "constant.language.easing.avatarscript" }
+          }
+        },
+        {
+          "match": "\\b(duration)\\s+([0-9]+(?:\\.[0-9]+)?s)\\b",
+          "captures": {
+            "1": { "name": "variable.parameter.avatarscript" },
+            "2": { "name": "constant.numeric.time.avatarscript" }
+          }
+        },
+        {
+          "match": "\\b(intensity)\\s+([-+]?[0-9]+(?:\\.[0-9]+)?)\\b",
+          "captures": {
+            "1": { "name": "variable.parameter.avatarscript" },
+            "2": { "name": "constant.numeric.avatarscript" }
+          }
+        },
+        {
+          "match": "\\b(x|y|to_x|to_y|to|deg|yaw|pitch)(:)([-+]?[0-9]+(?:\\.[0-9]+)?)\\b",
+          "captures": {
+            "1": { "name": "variable.parameter.coordinate.avatarscript" },
+            "2": { "name": "punctuation.separator.key-value.avatarscript" },
+            "3": { "name": "constant.numeric.avatarscript" }
+          }
+        },
+        {
+          "match": "\\b(at)(:)(left|right|up|down|center)\\b",
+          "captures": {
+            "1": { "name": "variable.parameter.avatarscript" },
+            "2": { "name": "punctuation.separator.key-value.avatarscript" },
+            "3": { "name": "constant.language.avatarscript" }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.avatarscript",
+          "begin": "\"",
+          "end": "\""
+        }
+      ]
+    },
+    "literals": {
+      "patterns": [
+        {
+          "name": "constant.numeric.resolution.avatarscript",
+          "match": "\\b[0-9]+x[0-9]+\\b"
+        },
+        {
+          "name": "constant.numeric.time.avatarscript",
+          "match": "\\b[0-9]+(?:\\.[0-9]+)?s\\b"
+        },
+        {
+          "name": "constant.numeric.avatarscript",
+          "match": "[-+]?[0-9]+(?:\\.[0-9]+)?\\b"
+        }
+      ]
+    }
+  }
+}

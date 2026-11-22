@@ -1,0 +1,55 @@
+# Dragon Ball Z Power-Up Aura Showcase
+# Demonstrates blue ki charge followed by Super Saiyan gold aura with lightning sparks
+
+scene "Super Saiyan Power Up":
+    canvas 1920x1080
+    background "#101018"
+    fps 30
+    duration 6.0s
+    render "super_saiyan_aura.mp4"
+
+    avatar "Goku":
+        character "ninja"
+        position center
+        scale 1.25
+
+        idle:
+            breathe
+            blink every 3.5s
+
+        at 0.0s:
+            expression neutral
+
+        # 1. Start charging Ki: calm blue aura
+        at 1.0s:
+            expression angry
+            aura blue size:25 intensity:0.8 speed:1.2 sparks:0 duration 0.5s
+            shake intensity:4 duration 1.0s
+
+        # 2. Power rising: aura intensifies
+        at 2.0s:
+            aura cyan size:40 intensity:1.5 speed:1.8 sparks:1 duration 0.5s
+            shake intensity:8 duration 1.0s
+            right_arm deg:-25 duration 0.3s
+            left_arm deg:25 duration 0.3s
+
+        # 3. Super Saiyan Explosion: Explosive Gold Aura with intense electric sparks & screen shake
+        at 3.0s:
+            expression shocked
+            aura gold size:65 intensity:2.2 speed:2.5 sparks:1 duration 0.2s
+            bounce intensity:18 duration 0.6s
+            shake intensity:22 duration 1.5s
+            scale 1.35 duration 0.3s easing elastic_out
+
+        # 4. Sustained Super Saiyan state: bright golden aura stabilized
+        at 4.5s:
+            expression smirk
+            aura gold size:48 intensity:1.6 speed:1.5 sparks:1 duration 0.5s
+            scale 1.25 duration 0.5s easing ease_in_out
+            right_arm deg:0 duration 0.5s
+            left_arm deg:0 duration 0.5s
+
+        # 5. Power down: aura vanishes cleanly
+        at 5.5s:
+            expression neutral
+            aura none duration 0.3s

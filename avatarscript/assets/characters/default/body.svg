@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Neck -->
+  <rect x="175" y="220" width="50" height="45" rx="10" fill="#F2C29B" stroke="#1E1E24" stroke-width="6"/>
+  <!-- Hoodie Torso -->
+  <polygon points="105,255 295,255 320,460 80,460" fill="#3B82F6" stroke="#1E1E24" stroke-width="8"/>
+  <!-- Center Chest Stripe / Shirt Accent -->
+  <polygon points="165,255 235,255 245,460 155,460" fill="#1D4ED8" stroke="#1E1E24" stroke-width="5"/>
+  <!-- Collar V-Neck -->
+  <polygon points="160,250 240,250 200,305" fill="#F8FAFC" stroke="#1E1E24" stroke-width="6"/>
+</svg>

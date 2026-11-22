@@ -1,0 +1,65 @@
+# Interactive Prop & Item Rigging Showcase
+# Demonstrates characters holding microphones, gaming controllers, swords, and phones
+
+scene "Interactive Prop Rigging":
+    canvas 1920x1080
+    background "#12141c"
+    fps 30
+    duration 5.0s
+    render "prop_rigging_showcase.mp4"
+
+    avatar "Streamer":
+        character "default"
+        position left
+        scale 1.15
+        hold item:"microphone" hand:right scale:1.4
+
+        idle:
+            breathe
+            blink every 3.5s
+
+        at 0.0s:
+            expression happy
+
+        # Speak into mic
+        at 1.0s:
+            right_arm deg:-45 duration 0.35s easing ease_out
+            expression neutral
+
+        # Swap to gaming controller
+        at 2.5s:
+            right_arm deg:0 duration 0.3s
+            hold item:"controller" hand:right scale:1.3
+            expression smirk
+
+        at 3.2s:
+            right_arm deg:-20 duration 0.2s
+            left_arm deg:20 duration 0.2s
+            bounce intensity:12 duration 0.4s
+
+    avatar "Warrior":
+        character "ninja"
+        position right
+        scale 1.15
+        hold item:"sword" hand:right scale:1.5
+
+        idle:
+            breathe
+            blink every 4.0s
+
+        at 0.0s:
+            expression neutral
+
+        # Combat stance with blade
+        at 1.2s:
+            expression angry
+            right_arm deg:-60 duration 0.3s easing elastic_out
+            aura cyan size:30 intensity:1.2 speed:1.5 sparks:1 duration 0.3s
+
+        # Sheathe sword and take out smartphone
+        at 3.0s:
+            aura none duration 0.3s
+            right_arm deg:0 duration 0.4s
+            hold item:"phone" hand:right scale:1.3
+            expression surprised
+            left_arm deg:30 duration 0.3s

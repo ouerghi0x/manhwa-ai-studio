@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sample Manhwa Chapter (local test page)</title>
+<style>
+  body { margin: 0; background: #111; color: #eee; font-family: Segoe UI, sans-serif; }
+  header, footer { text-align: center; padding: 30px; background: #1d1d26; }
+  .reader { max-width: 720px; margin: 0 auto; }
+  img.panel { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<header><h1>Sample Manhwa — Chapter 1</h1><p>Mock panels for testing Manhwa Recorder</p></header>
+<div class="reader" id="reader"></div>
+<footer id="footer"><h2>End of chapter</h2></footer>
+<script>
+// Generates tall, numbered mock panels as SVG data URIs.
+// Panels 1-3 load eagerly, the rest use loading="lazy".
+// When the reader nears the bottom, 4 more panels are appended once
+// (simulates dynamically loaded / infinite-scroll content).
+const colors = ["#3b2f6b", "#6b2f45", "#2f6b5a", "#6b5a2f", "#2f4a6b", "#5a2f6b"];
+function panelSvg(n, h) {
+  const c = colors[n % colors.length];
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='720' height='${h}'>
+    <rect width='100%' height='100%' fill='${c}'/>
+    <circle cx='360' cy='${h/2}' r='${Math.min(200, h/4)}' fill='rgba(255,255,255,0.12)'/>
+    <text x='50%' y='50%' font-size='120' fill='white' text-anchor='middle' dominant-baseline='middle'
+      font-family='Segoe UI'>${n}</text>
+    <text x='50%' y='${h - 40}' font-size='28' fill='#ddd' text-anchor='middle'>panel ${n} — ${h}px</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+const reader = document.getElementById("reader");
+let count = 0;
+function addPanels(k) {
+  for (let i = 0; i < k; i++) {
+    count++;
+    const img = document.createElement("img");
+    img.className = "panel";
+    img.alt = "panel " + count;
+    img.width = 720;
+    img.height = 900 + (count % 3) * 300;
+    if (count > 3) img.loading = "lazy";
+    img.src = panelSvg(count, img.height);
+    reader.appendChild(img);
+  }
+}
+addPanels(12);
+let extended = false;
+window.addEventListener("scroll", () => {
+  const se = document.scrollingElement;
+  if (!extended && se.scrollTop + innerHeight > se.scrollHeight - 1500) {
+    extended = true;
+    setTimeout(() => addPanels(4), 300);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+scene "Depth25D_VTuber_Showcase":
+    canvas 1280x720
+    background "#181926"
+    fps 30
+    duration 5.0s
+    render "renders/depth_25d_showcase.mp4"
+
+    avatar "streamer":
+        character "default"
+        position center
+        scale 1.2
+        hold item:"microphone" hand:right scale:1.4
+
+        idle:
+            breathe
+            blink every 3.0s
+
+        at 0.0s:
+            expression neutral
+
+        # 1. Turn head toward left chat window and look left
+        at 0.5s:
+            head_turn yaw:-32 pitch:5 duration 0.6s easing ease_out
+            look at:left duration 0.3s
+            expression surprised
+
+        # 2. Nod in agreement while looking down-left
+        at 1.5s:
+            head_turn yaw:-25 pitch:16 duration 0.4s easing ease_in_out
+            look at:down duration 0.2s
+            expression happy
+
+        # 3. Quick snap to the right to check game monitor
+        at 2.5s:
+            head_turn yaw:35 pitch:-6 duration 0.5s easing ease_out
+            look at:right duration 0.25s
+            expression smirk
+
+        # 4. Turn back to center camera, eye contact with viewer
+        at 3.8s:
+            head_turn yaw:0 pitch:0 duration 0.5s easing ease_in_out
+            look at:center duration 0.3s
+            expression happy
+            arm angle:25 duration 0.3s

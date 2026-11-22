@@ -1,0 +1,254 @@
+{
+  "name": "vscode-avatarscript",
+  "displayName": "AvatarScript (.ava) Language Support",
+  "description": "One-click Run/Preview/Render buttons, syntax highlighting, file icons, snippets, and live error checking for AvatarScript (.ava) 2D animated reaction avatars.",
+  "version": "0.2.0",
+  "publisher": "avatarscript",
+  "icon": "icons/avatarscript-logo.png",
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:avatarscript",
+    "onCommand:avatarscript.preview",
+    "onCommand:avatarscript.render",
+    "onCommand:avatarscript.validate",
+    "onCommand:avatarscript.exportFrames"
+  ],
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "avatarscript",
+    "ava",
+    "animation",
+    "avatar",
+    "dsl",
+    "vtuber",
+    "youtube"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "avatarscript",
+        "aliases": [
+          "AvatarScript",
+          "avatarscript",
+          "ava"
+        ],
+        "extensions": [
+          ".ava"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/ava-file-icon.svg",
+          "dark": "./icons/ava-file-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "avatarscript",
+        "scopeName": "source.avatarscript",
+        "path": "./syntaxes/avatarscript.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "avatarscript",
+        "path": "./snippets/avatarscript.snippets.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "avatarscript.preview",
+        "title": "AvatarScript: Live Preview (.ava)",
+        "shortTitle": "Preview .ava",
+        "icon": "$(play)"
+      },
+      {
+        "command": "avatarscript.render",
+        "title": "AvatarScript: Render to MP4 Video",
+        "shortTitle": "Render MP4",
+        "icon": "$(device-camera-video)"
+      },
+      {
+        "command": "avatarscript.exportFrames",
+        "title": "AvatarScript: Export Transparent PNG Frames",
+        "shortTitle": "Export PNGs",
+        "icon": "$(file-media)"
+      },
+      {
+        "command": "avatarscript.validate",
+        "title": "AvatarScript: Validate Script",
+        "shortTitle": "Validate .ava",
+        "icon": "$(check)"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "avatarscript.preview",
+          "when": "resourceExtname == .ava",
+          "group": "navigation@1"
+        },
+        {
+          "command": "avatarscript.render",
+          "when": "resourceExtname == .ava",
+          "group": "navigation@2"
+        },
+        {
+          "command": "avatarscript.exportFrames",
+          "when": "resourceExtname == .ava",
+          "group": "1_export@1"
+        },
+        {
+          "command": "avatarscript.validate",
+          "when": "resourceExtname == .ava",
+          "group": "1_export@2"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "avatarscript.preview",
+          "when": "resourceExtname == .ava",
+          "group": "navigation@1"
+        },
+        {
+          "command": "avatarscript.render",
+          "when": "resourceExtname == .ava",
+          "group": "navigation@2"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "avatarscript.preview",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@1"
+        },
+        {
+          "command": "avatarscript.render",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@2"
+        },
+        {
+          "command": "avatarscript.exportFrames",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@3"
+        },
+        {
+          "command": "avatarscript.validate",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@4"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "avatarscript.preview",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@1"
+        },
+        {
+          "command": "avatarscript.render",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@2"
+        },
+        {
+          "command": "avatarscript.exportFrames",
+          "when": "resourceExtname == .ava",
+          "group": "1_avatarscript@3"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "avatarscript.preview",
+        "key": "ctrl+shift+p",
+        "when": "NeverUseCtrlShiftP",
+        "mac": "cmd+shift+p"
+      },
+      {
+        "command": "avatarscript.preview",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+alt+p",
+        "when": "editorTextFocus && resourceExtname == .ava"
+      },
+      {
+        "command": "avatarscript.render",
+        "key": "ctrl+alt+r",
+        "mac": "cmd+alt+r",
+        "when": "editorTextFocus && resourceExtname == .ava"
+      }
+    ],
+    "configuration": {
+      "title": "AvatarScript",
+      "properties": {
+        "avatarscript.executablePath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional custom path to avatarscript.exe (if empty, automatically discovers avatarscript/.venv/Scripts/avatarscript.exe)."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[avatarscript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.semanticHighlighting.enabled": true
+      },
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "keyword.control.block.avatarscript",
+            "settings": {
+              "foreground": "#C792EA",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "keyword.other.property.avatarscript",
+            "settings": {
+              "foreground": "#82AAFF"
+            }
+          },
+          {
+            "scope": "support.function.animation.avatarscript",
+            "settings": {
+              "foreground": "#89DDFF",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "constant.language.expression.avatarscript",
+            "settings": {
+              "foreground": "#FFCB6B",
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": "constant.language.easing.avatarscript",
+            "settings": {
+              "foreground": "#C3E88D"
+            }
+          },
+          {
+            "scope": "constant.numeric.time.avatarscript",
+            "settings": {
+              "foreground": "#F78C6C",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "constant.numeric.resolution.avatarscript",
+            "settings": {
+              "foreground": "#FF5370",
+              "fontStyle": "bold"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

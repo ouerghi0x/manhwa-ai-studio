@@ -1,0 +1,65 @@
+# Flying Hero & Dynamic Scale Control Showcase
+# Demonstrates multi-channel animation: flying across the screen, massive camera zoom-ins,
+# shrinking into the distance, flight banking angles, and 2.5D head turn depth.
+
+scene "Flying_Hero_Showcase":
+    canvas 1920x1080
+    background "#0d0f18"
+    fps 30
+    duration 7.0s
+    render "renders/flying_showcase.mp4"
+
+    avatar "hero":
+        character "ninja"
+        position x:960 y:850
+        scale 0.95
+        hold item:"sword" hand:right scale:1.4
+
+        idle:
+            breathe
+            blink every 3.0s
+
+        at 0.0s:
+            expression neutral
+
+        # 1. Takeoff: ignite energy aura, lift off, tilt forward into flight
+        at 1.0s:
+            expression angry
+            aura cyan size:45 intensity:1.5 speed:1.8 sparks:1 duration 0.4s
+            move to_x:960 to_y:450 duration 0.7s easing ease_out
+            rotate -12 duration 0.5s easing ease_out
+            scale 1.15 duration 0.7s easing ease_out
+            head_turn yaw:15 pitch:-12 duration 0.4s
+            look at:up duration 0.2s
+
+        # 2. High-speed swoop toward camera: massive scale zoom (flying right at viewer)
+        at 2.2s:
+            expression shocked
+            aura gold size:70 intensity:2.2 speed:2.5 sparks:1 duration 0.3s
+            move to_x:1350 to_y:280 duration 0.8s easing ease_in_out
+            scale 1.85 duration 0.8s easing ease_in_out
+            rotate 15 duration 0.6s easing ease_in_out
+            head_turn yaw:-25 pitch:10 duration 0.5s
+            look at:left duration 0.2s
+            right_arm -65 duration 0.3s
+
+        # 3. Bank and fly across into the distance (shrink down to scale 0.55)
+        at 3.5s:
+            expression smirk
+            aura blue size:30 intensity:1.0 speed:1.2 sparks:0 duration 0.5s
+            move to_x:380 to_y:220 duration 1.2s easing ease_in_out
+            scale 0.55 duration 1.2s easing ease_in_out
+            rotate -20 duration 0.8s easing ease_in_out
+            head_turn yaw:35 pitch:-15 duration 0.6s
+            look at:right duration 0.3s
+            right_arm 0 duration 0.4s
+
+        # 4. Swoop back to center screen and hover steadily at standard scale
+        at 5.2s:
+            expression happy
+            aura gold size:40 intensity:1.2 speed:1.0 sparks:1 duration 0.5s
+            move to_x:960 to_y:540 duration 0.9s easing ease_out
+            scale 1.20 duration 0.9s easing ease_out
+            rotate 0 duration 0.6s easing ease_out
+            head_turn yaw:0 pitch:0 duration 0.5s easing ease_in_out
+            look at:center duration 0.3s

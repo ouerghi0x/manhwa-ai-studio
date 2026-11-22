@@ -1,0 +1,34 @@
+scene "anime_reaction":
+
+    canvas 1920x1080
+    background "#202020"
+    fps 30
+    duration 12s
+
+    avatar "main":
+
+        character "default"
+
+        position right
+        scale 1.2
+
+        idle:
+            breathe
+            blink every 4s
+
+        at 0s:
+            expression neutral
+
+        at 3s:
+            expression surprised
+            animate shake duration 0.4s
+
+        at 6s:
+            expression happy
+            animate bounce duration 0.6s
+
+        at 9s:
+            expression angry
+            move x:30 y:0 duration 0.3s
+
+    render "output.mp4"

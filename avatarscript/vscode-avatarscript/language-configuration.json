@@ -1,0 +1,27 @@
+{
+  "comments": {
+    "lineComment": "#"
+  },
+  "brackets": [
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"]
+  ],
+  "autoClosingPairs": [
+    { "open": "\"", "close": "\"", "notIn": ["string", "comment"] },
+    { "open": "(", "close": ")" },
+    { "open": "[", "close": "]" }
+  ],
+  "surroundingPairs": [
+    ["\"", "\""],
+    ["(", ")"],
+    ["[", "]"]
+  ],
+  "indentationRules": {
+    "increaseIndentPattern": "^\\s*(scene|avatar|idle|at)\\b.*:\\s*(#.*)?$",
+    "decreaseIndentPattern": "^\\s*(render)\\b.*$"
+  },
+  "folding": {
+    "offSide": true
+  }
+}

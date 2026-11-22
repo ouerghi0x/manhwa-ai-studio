@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets, OAuth Credentials & Browser Profiles (NEVER COMMIT)
+manhwa-publisher/credentials/*.json
+!manhwa-publisher/credentials/.gitkeep
+**/browser_profile/
+**/user_settings.json
+.env
+*.secret
+
+# Runtime Data, Rendered Media, Models & Logs
+manhwa-publisher/data/*.db*
+!manhwa-publisher/data/.gitkeep
+**/logs/*.log
+**/logs/*.jsonl
+!manhwa-publisher/logs/.gitkeep
+content/
+output/
+**/output/
+.mdtools/
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.wav
+*.mp3
+*.onnx
+*.bin
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Ninja Dark Torso / Shinobi Gi -->
+  <polygon points="120,250 280,250 310,480 90,480" fill="#1E1E2E" stroke="#0F0F17" stroke-width="8"/>
+  <!-- Crimson Sash / Obi Belt -->
+  <rect x="90" y="380" width="220" height="35" fill="#DC2626" stroke="#0F0F17" stroke-width="5"/>
+  <!-- Gi Cross Collar V-Neck -->
+  <polygon points="150,250 200,320 250,250" fill="#0F0F17"/>
+</svg>

@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# VS Code extension local build artifacts
+node_modules/
+*.vsix
+.vscode-test/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Rendered test & example video outputs (keep examples light; scripts are reproducible)
+examples/*.mp4
+examples/*.avi
+examples/*.mov
+examples/*.png
+!examples/super_saiyan_aura_snapshot.png
